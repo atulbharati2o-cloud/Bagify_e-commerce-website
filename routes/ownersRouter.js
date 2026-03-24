@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ownerModel = require("../models/owners.model.js");
+const ownerModel = require("../models/ownerModel.js");
 
 //Allow owner creation ONLY in development
 if(process.env.NODE_ENV === "development") {
