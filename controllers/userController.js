@@ -31,13 +31,18 @@ const registerUser = async (req, res) => {
         let salt = await bcrypt.genSalt(10);
         let hashedPassword = await bcrypt.hash(password, salt);
 
+        // Profile picture handling
+        const profilePic = req.file ? req.file.filename : null;
+        
+
         // Create the user
         user = await userModel.create({
             fullname,
             email,
             password: hashedPassword,
             gender,
-            contact
+            contact,
+            profilePic
         });
 
         let userObj = user.toObject();
@@ -113,4 +118,9 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = (req, res) => {
+    res.clearCookie("token");
+    return res.redirect("/login");
+};
+
+module.exports = { registerUser, loginUser, logoutUser };

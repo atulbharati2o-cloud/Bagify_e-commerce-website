@@ -37,7 +37,7 @@
       <p class="text-gray-500 mb-6">Create your account and start exploring 👜</p>
 
       <!-- Form -->
-      <form action="/users/register" method="POST" class="space-y-4">
+      <form action="/users/register" method="POST" class="space-y-4" enctype="multipart/form-data">
 
         <!-- Full Name -->
         <input 
@@ -94,6 +94,17 @@
           required
         >
 
+        <!-- Profile Picture -->
+        <div>
+          <label class="text-gray-600 text-sm">Profile Picture</label>
+          <input 
+            type="file" 
+            name="profilepic"
+            accept="image/*"
+            class="w-full mt-1"
+          >
+        </div>
+
         <!-- Button -->
         <button 
           type="submit"
@@ -107,7 +118,7 @@
       <!-- Footer -->
       <p class="text-sm text-gray-500 mt-6 text-center">
         Already have an account? 
-        <a href="/users/login" class="text-indigo-500 hover:underline">Login</a>
+        <a href="/login" class="text-indigo-500 hover:underline">Login</a>
       </p>
 
     </div>
